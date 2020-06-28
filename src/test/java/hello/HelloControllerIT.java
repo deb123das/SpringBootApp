@@ -28,7 +28,7 @@ public class HelloControllerIT {
     private TestRestTemplate template;
 
     @Before
-    public void setUp()  throws Exception {
+    public void setUp()  throws Exception{
         this.base = new URL("http://localhost:" + port + "/");
     }
 
