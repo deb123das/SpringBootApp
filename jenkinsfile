@@ -3,14 +3,28 @@ pipeline{
     agent any
 
     stages {
-        stage('Build') {
+        stage('Compile') {
             steps {
-                echo 'Building..'
+                echo 'Compiling..'
+                sh './gradlew clean compileJava'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                script {
+                    try {
+                        echo 'Testing..'
+                        sh './gradlew test --no-daemon' //run a gradle task
+                    } finally {
+                        junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
+                    }
+                }
+            }
+        }
+        stage('Build') {
+            steps {
+                echo 'Building..'
+                sh './gradlew build'
             }
         }
         stage('Deploy') {
