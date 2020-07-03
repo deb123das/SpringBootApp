@@ -12,12 +12,8 @@ pipeline{
         stage('Test') {
             steps {
                 script {
-                    try {
-                        echo 'Testing..'
-                        sh './gradlew test --no-daemon' //run a gradle task
-                    } finally {
-                        junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
-                    }
+                    echo 'Testing..'
+                    sh './gradlew test'
                 }
             }
         }
