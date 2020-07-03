@@ -5,7 +5,6 @@ pipeline{
     stages {
         stage('Compile') {
             steps {
-                sh 'sudo chmod +x gradlew'
                 echo 'Compiling..'
                 sh './gradlew clean compileJava'
             }
@@ -14,7 +13,6 @@ pipeline{
             steps {
                 script {
                     try {
-                        sh 'sudo chmod +x gradlew'
                         echo 'Testing..'
                         sh './gradlew test --no-daemon' //run a gradle task
                     } finally {
@@ -25,7 +23,6 @@ pipeline{
         }
         stage('Build') {
             steps {
-                sh 'sudo chmod +x gradlew'
                 echo 'Building..'
                 sh './gradlew build'
             }
