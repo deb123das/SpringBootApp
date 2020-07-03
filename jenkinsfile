@@ -6,7 +6,7 @@ pipeline{
         stage('Compile') {
             steps {
                 echo 'Compiling..'
-                bat './gradlew clean compileJava'
+                sh './gradlew clean compileJava'
             }
         }
         stage('Test') {
@@ -14,7 +14,7 @@ pipeline{
                 script {
                     try {
                         echo 'Testing..'
-                        bat './gradlew test --no-daemon' //run a gradle task
+                        sh './gradlew test --no-daemon' //run a gradle task
                     } finally {
                         junit '**/build/test-results/test/*.xml' //make the junit test results available in any case (success & failure)
                     }
@@ -24,7 +24,7 @@ pipeline{
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat './gradlew build'
+                sh './gradlew build'
             }
         }
         stage('Deploy') {
