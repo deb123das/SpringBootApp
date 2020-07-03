@@ -1,8 +1,9 @@
 pipeline{
 
     agent any
-    sh 'sudo chmod +x ./gradlew'
+
     stages {
+        sh 'sudo chmod +x ./gradlew'
         stage('Compile') {
             steps {
                 echo 'Compiling..'
