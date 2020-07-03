@@ -6,7 +6,7 @@ pipeline{
         stage('Compile') {
             steps {
                 echo 'Compiling..'
-                bat './gradlew clean compileJava'
+                sh './gradlew clean compileJava'
             }
         }
         stage('Test') {
@@ -20,7 +20,7 @@ pipeline{
         stage('Build') {
             steps {
                 echo 'Building..'
-                bat './gradlew bootJar'
+                sh './gradlew bootJar'
             }
         }
         stage('Deploy') {
