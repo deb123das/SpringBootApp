@@ -1,11 +1,12 @@
 pipeline{
 
+    agent any
 
     stages {
         stage('Compile') {
             steps {
                 echo 'Compiling..'
-                sh './gradlew clean compileJava'
+                bat './gradlew clean compileJava'
             }
         }
         stage('Test') {
@@ -19,7 +20,7 @@ pipeline{
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh './gradlew build'
+                bat './gradlew bootJar'
             }
         }
         stage('Deploy') {
